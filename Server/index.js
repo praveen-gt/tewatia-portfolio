@@ -8,7 +8,7 @@ const rankRoute = require("./Routes/rankMethods");
 const uri = config.getSecretToken();
 
 const app = express();
-const Port = process.env.PORT || 3600;
+const Port = process.env.PORT;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -20,9 +20,7 @@ app.get("/", (req, res, next) => {
 
 app.use("/likes", likeRoute);
 app.use("/ranks", rankRoute);
-app.listen(Port, () => {
-  console.log(`Server Running ${Port}`);
-});
+app.listen(Port)
 
 mongoose
   .connect(uri)
